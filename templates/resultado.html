@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado MiniTest</title>
+</head>
+<body style="font-family:sans-serif; text-align:center;">
+    <h1>Resultado 🏆</h1>
+    <p>Tu puntaje: {{puntaje}} / {{total}}</p>
+
+    <h2>Respuestas:</h2>
+    <ul style="list-style:none;">
+        {% for i in range(total) %}
+            <li>
+                <strong>{{ preguntas[i].pregunta }}</strong><br>
+                Tu respuesta: {{ respuestas[i] }}<br>
+                Respuesta correcta: {{ preguntas[i].respuesta_correcta }}<br>
+                {% if respuestas[i] == preguntas[i].respuesta_correcta %}
+                    ✅ Correcto
+                {% else %}
+                    ❌ Incorrecto
+                {% endif %}
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+    <button onclick="location.href='/'">Volver a empezar</button>
+</body>
+</html>

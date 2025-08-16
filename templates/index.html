@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MiniTest 📝</title>
+</head>
+<body style="font-family:sans-serif; text-align:center;">
+    <h1>MiniTest 📝</h1>
+    <form method="POST">
+        {% for p in preguntas %}
+            <div style="margin-bottom:20px;">
+                <h3>{{ p.pregunta }}</h3>
+                {% for opcion in p.opciones %}
+                    <label>
+                        <input type="radio" name="pregunta{{ loop.index0 }}" value="{{opcion}}" required> {{opcion}}
+                    </label><br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit">Enviar respuestas</button>
+    </form>
+</body>
+</html>
