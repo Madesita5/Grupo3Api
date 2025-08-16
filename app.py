@@ -1,4 +1,7 @@
-from flask import Flask, jsonifyimport requestsimport htmlimport random
+from flask import Flask, jsonify
+import requests
+import html
+import random
 
 app = Flask(__name__)
 def obtener_pregunta():
