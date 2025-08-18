@@ -35,5 +35,26 @@ def index():
                                respuestas=respuestas_usuario, preguntas=preguntas)
     return render_template("index.html", preguntas=preguntas)
 
+
+# Feature de estadisticas
+@app.route("/estadisticas", methods=["GET"])
+def estadisticas():
+    texto = request.args.get("texto", "")
+
+    resultado = None
+    if texto:
+        num_palabras = len(texto.split())
+        num_caracteres = len(texto.replace(" ", ""))
+        num_vocales = sum(1 for c in texto.lower() if c in "aeiouáéíóú")
+
+        resultado = {
+            "palabras": num_palabras,
+            "caracteres": num_caracteres,
+            "vocales": num_vocales
+        }
+
+    return render_template("estadisticas.html", resultado=resultado)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
